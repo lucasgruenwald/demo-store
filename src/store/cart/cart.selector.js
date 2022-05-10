@@ -1,12 +1,14 @@
 import { createSelector } from "reselect";
 
-const selectCartReducer = (state) => state.cart;
+const selectCartReducer = (state) => {
+  return state.cart;
+}
 
 // use reselect to memoize if inputs pass strict equality 
 
 export const selectIsCartOpen = createSelector(
   [selectCartReducer],
-  (cart) => cart.selectIsCartOpen
+  (cart) => cart.isCartOpen
 );
 
 export const selectCartItems = createSelector(
