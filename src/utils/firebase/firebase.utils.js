@@ -1,4 +1,3 @@
-import { paste } from '@testing-library/user-event/dist/paste';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, 
     createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
@@ -27,7 +26,7 @@ googleProvider.setCustomParameters({
 });
 
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
-// export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
+export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
 
