@@ -20,10 +20,6 @@ const PaymentForm = () => {
   const paymentHandler = async (e) => {
     e.preventDefault();
     
-    console.log("hello from payment handler")
-    console.log(e)
-    console.log(stripe)
-    console.log(elements)
     if (!stripe || !elements) { return };
 
     setIsProcessingPayment(true);
@@ -36,8 +32,6 @@ const PaymentForm = () => {
       body: JSON.stringify({ amount: amount * 100 }),
     })
     .then((response) => {
-      console.log(response)
-      console.log("about to return response json")
       return response.json();
     });
 
@@ -72,6 +66,7 @@ const PaymentForm = () => {
         <button className="payment-button inverted" type="submit">
         { isProcessingPayment ? <div className='loading-spinner'></div> : "Pay Now" }
         </button>
+        <p>Test Card: 4242 4242 4242 4242 -- 04/24 -- 123 -- 12345</p>
       </form>
     </div>
 
