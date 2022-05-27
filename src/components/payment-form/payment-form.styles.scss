@@ -1,4 +1,23 @@
-.button-container {
+.payment-form-container { 
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  height: 100px;
+  margin-top: 50px;
+  min-width: 500px;
+}
+
+.payment-button{
+  margin-left: auto;
+  margin-top: 30px;
+}
+  
+.payment-button {
   min-width: 165px;
   width: auto;
   height: 50px;
@@ -15,7 +34,6 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
-  align-items: center;
 
   &:hover {
     background-color: white;
