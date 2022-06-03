@@ -1,8 +1,8 @@
 import { createSelector } from "reselect";
 
-const selectCartReducer = (state) => {
-  return state.cart;
-}
+import { CartState } from "./cart.reducer";
+
+const selectCartReducer = (state): CartState => state.cart;
 
 // use reselect to memoize if inputs pass strict equality 
 
