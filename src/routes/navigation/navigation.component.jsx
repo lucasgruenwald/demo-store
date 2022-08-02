@@ -2,8 +2,6 @@ import { Fragment } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { ReactComponent as CrwnLogo } from '../../assets/crown.svg'
-
 import { selectCurrentUser } from '../../store/user/user.selector';
 import { signOutStart } from "../../store/user/user.action";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
@@ -25,8 +23,10 @@ const Navigation = () => {
   
         <div className='navigation'>
             <Link className='logo-container' to='/'>
-                <CrwnLogo className='logo' />
+                <img style={{"width": "50px"}} src="https://cdn.shopify.com/s/files/1/0280/2145/6994/products/GolderRetriever_300x300.png?v=1610292518"/>
             </Link>
+
+
 
             <div className='nav-links-container'>
               <Link className='nav-link' to='/shop'>
