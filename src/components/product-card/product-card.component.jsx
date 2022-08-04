@@ -17,13 +17,13 @@ const ProductCard = ({ product }) => {
     const addProductToCart = () => dispatch(addItemToCart(cartItems, product));
 
     return(
-        <div style={{"border": "1px solid lightgray", "borderRadius": "4px", "paddingLeft": "5px", "paddingRight": "5px", "paddingTop": "5px"}}>
-            <img src={imageUrl} alt={`${name}`} style={{"maxWidth": "100%", "aspectRatio": "1/1"}} />
-            <div className='footer' style={{"display": "flex", "justifyContent": "center"}}>
+        <div className="product-card-container" style={{"border": "1px solid lightgray", "borderRadius": "4px", "paddingLeft": "5px", "paddingRight": "5px", "paddingTop": "5px"}}>
+            <img src={imageUrl} alt={`${name}`} style={{"aspectRatio": "1/1"}} />
+            <div className='footer'>
                 <span className='name'>{name}</span>
                 <span className='price' style={{"marginLeft": "10px"}}>${price}</span>
             </div>
-            <Button buttonType='inverted' onClick={addProductToCart} style={{"margin": "auto", "marginTop": "10px"}}>
+            <Button buttonType='inverted' onClick={addProductToCart} style={{"margin": "auto"}}>
                 Add to cart
             </Button>
         </div>

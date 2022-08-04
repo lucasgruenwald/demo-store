@@ -3,15 +3,28 @@
   flex-direction: column;
   margin-bottom: 30px;
 
+  @media screen and (max-width: 700px) {
+    align-items: center;    
+  }
+
   .title {
     font-size: 28px;
     margin-bottom: 25px;
     cursor: pointer;
+
+    &:hover{
+      color: gray;
+    }
   }
 
   .preview {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 20px;
+    display: flex;
+    justify-content: left;
+
+    @media screen and (max-width: 700px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 15px;
+    }
   }
 }

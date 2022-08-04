@@ -4,6 +4,10 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
+
+    @media screen and (max-width: 700px) {
+      padding: 10px;
+    }
   
     .logo-container {
       height: 100%;
@@ -17,6 +21,10 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+
+      @media screen and (max-width: 800px) {
+        width: 80%;
+      }
   
       .nav-link {
         padding: 10px 15px;
