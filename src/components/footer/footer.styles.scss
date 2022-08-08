@@ -1,0 +1,29 @@
+.footer-container {
+  background-color: rgb(244, 244, 244);
+  color: black;
+  filter: drop-shadow(0 0 0.5rem rgb(219, 219, 219));
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 15vw;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-top: 20%;
+}
+
+.footer-container > div > p {
+  margin-top: 30px;
+}
+
+#foot-1{
+  margin-left: 25px;
+  max-width: 85px;
+}
+
+#foot-2{
+  max-width: 70px;
+  transform: translateY(-6px);
+  border-radius: 5px;
+  background-color: white;
+  padding: 2px;
+  filter: invert(100%);
+}

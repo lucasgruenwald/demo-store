@@ -5,6 +5,12 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 100px;
+
+  // until payment is mobile friendly
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
+
 }
 
 .form-container {
