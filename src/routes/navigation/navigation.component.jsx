@@ -23,7 +23,7 @@ const Navigation = () => {
   
         <div className='navigation'>
             <Link className='logo-container' to='/'>
-                <img style={{"width": "50px"}} src="https://cdn.shopify.com/s/files/1/0280/2145/6994/products/GolderRetriever_300x300.png?v=1610292518"/>
+                <img alt="dog logo" style={{"width": "50px"}} src="https://cdn.shopify.com/s/files/1/0280/2145/6994/products/GolderRetriever_300x300.png?v=1610292518"/>
             </Link>
 
 

@@ -1,8 +1,10 @@
 import './directory.styles.scss'
 import DirectoryItem from '../directory-item/directory-item.component';
-import { useEffect } from 'react';
-import { addCollectionAndDocuments } from '../../utils/firebase/firebase.utils';
-import SHOP_DATA from '../../shop-data';
+
+// save these imports to add entries to firebase 
+// import { useEffect } from 'react';
+// import { addCollectionAndDocuments } from '../../utils/firebase/firebase.utils';
+// import SHOP_DATA from '../../shop-data';
 
   const categories = [
     {

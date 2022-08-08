@@ -1,5 +1,5 @@
 import { compose, createStore, applyMiddleware, Middleware } from "redux";
-import { persistStore, persistReducer, PersistConfig } from 'redux-persist';
+import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'
 import logger from "redux-logger";
 // import thunk from "redux-thunk";
@@ -16,9 +16,9 @@ declare global {
   }
 }
 
-type ExtendedPersistConfig = PersistConfig<RootState> & {
-  whitelist: (keyof RootState)[];
-}
+// type ExtendedPersistConfig = PersistConfig<RootState> & {
+//   whitelist: (keyof RootState)[];
+// }
 
 const persistConfig = {
   key: 'root',
