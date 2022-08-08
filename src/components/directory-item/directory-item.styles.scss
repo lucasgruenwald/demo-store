@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
+    filter: drop-shadow(0 0 0.1rem gray);
     margin: 0 7.5px 15px;
     overflow: hidden;
   
@@ -43,13 +43,14 @@
     }
   
     .body {
-      height: 90px;
+      height: 80px;
       padding: 0 1vw;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      border: 1px solid black;
+      border-radius: 5px;
+      filter: drop-shadow(0 0 0.75rem black);
       background-color: white;
       opacity: 0.9;
       position: absolute;
