@@ -44,6 +44,15 @@ const SignInForm = () => {
     }
   };
 
+  const brokenFunction = async (event) => {
+    event.preventDefault();
+
+    // this will cause an error
+    var foo = null;
+    alert("triggering an error - check sentry")
+    foo.bar = 1;
+  }
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -76,6 +85,9 @@ const SignInForm = () => {
           <Button type='submit'>Sign In</Button>
           <Button type='button' buttonType='google' onClick={signInWithGoogle}>
             Google sign in
+          </Button>
+          <Button type='broken' onClick={brokenFunction} style={{"backgroundColor": "crimson", "marginTop": "20px"}}>
+            Broken Sign In
           </Button>
         </div>
       </form>

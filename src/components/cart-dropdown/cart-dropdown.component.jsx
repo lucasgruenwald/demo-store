@@ -7,6 +7,8 @@ import { setIsCartOpen } from '../../store/cart/cart.action';
 import Button from '../button/button.component'
 import CartItem from '../cart-item/cart-item.component'
 
+import * as Sentry from "@sentry/react";
+
 import './cart-dropdown.styles.scss'
 
 const CartDropdown = () => {
@@ -18,6 +20,10 @@ const CartDropdown = () => {
     const goToCheckoutHandler = () => {
         toggleIsCartOpen();
         navigate('/checkout');
+        Sentry.addBreadcrumb({
+            category: "cart",
+            message: "Custom Breadcrumb: Go To Checkout",
+        });
     }
 
     const toggleIsCartOpen = () => dispatch(setIsCartOpen(!isCartOpen));

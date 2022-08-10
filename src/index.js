@@ -17,6 +17,22 @@ import './index.scss';
 Sentry.init({
   dsn: "https://0efc8635e303465ebf813b6dfce3ee2d@o1349733.ingest.sentry.io/6629349",
   integrations: [new BrowserTracing()],
+  beforeBreadcrumb(breadcrumb){
+
+      // console.log("breadcrumb:")
+      // console.log(breadcrumb)
+
+    if (breadcrumb.data && breadcrumb.data && breadcrumb.data.arguments && breadcrumb.data.arguments[2] && breadcrumb.data.arguments[2].type) {
+      const reduxAction = breadcrumb.data.arguments[2].type;
+      breadcrumb.message = reduxAction;
+      breadcrumb.data = {"Redux": "Logger"};
+    } else if (breadcrumb.message.includes("state color")) {
+      //trash this console color message
+      return null;
+    }
+    
+    return breadcrumb;
+  },
 
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.

@@ -45,6 +45,15 @@ const SignUpForm = () => {
         };
       };
 
+      const brokenFunction = async (event) => {
+        event.preventDefault();
+
+        // this will cause an error
+        var foo = null;
+        alert("triggering an error - check sentry")
+        return foo.bar;
+      }
+
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -72,6 +81,10 @@ const SignUpForm = () => {
                 name='confirmPassword' value={confirmPassword}/>
 
                 <Button type="submit">Sign Up</Button>
+
+                <Button type="broken" onClick={brokenFunction} style={{"backgroundColor": "crimson", "marginTop": "20px"}}>
+                  Broken sign up
+                </Button>
 
             </form>
         </div>

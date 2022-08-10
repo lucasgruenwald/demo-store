@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { selectCartTotal } from "../../store/cart/cart.selector";
 import { selectCurrentUser } from "../../store/user/user.selector";
 
+import * as Sentry from "@sentry/react";
+
 import "./payment-form.styles.scss";
 // import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
@@ -19,6 +21,11 @@ const PaymentForm = () => {
 
   const paymentHandler = async (e) => {
     e.preventDefault();
+
+    Sentry.addBreadcrumb({
+      category: "payment",
+      message: "Custom Breadcrumb: Payment Click",
+  });
     
     if (!stripe || !elements) { return };
 
