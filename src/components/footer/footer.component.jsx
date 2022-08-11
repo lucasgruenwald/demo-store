@@ -1,9 +1,14 @@
 import './footer.styles.scss'
+import * as Sentry from "@sentry/react";
 
 const Footer = () => {
 
   const function418 = async (event) => {
     event.preventDefault();
+    Sentry.addBreadcrumb({
+      category: "directory",
+      message: "Custom Breadcrumb: Clicked Teapot",
+    });
     const response = await fetch('http://httpstat.us/418', {})
   }
 

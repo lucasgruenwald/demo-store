@@ -25,7 +25,7 @@ const PaymentForm = () => {
     Sentry.addBreadcrumb({
       category: "payment",
       message: "Custom Breadcrumb: Payment Click",
-  });
+    });
     
     if (!stripe || !elements) { return };
 

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
+import * as Sentry from "@sentry/react";
 import { selectCurrentUser } from '../../store/user/user.selector';
 import { signOutStart } from "../../store/user/user.action";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
@@ -16,7 +16,13 @@ const Navigation = () => {
     const currentUser = useSelector(selectCurrentUser);
     const isCartOpen = useSelector(selectIsCartOpen);
 
-    const signOutUser = () => dispatch(signOutStart());
+    const signOutUser = () => {
+      Sentry.addBreadcrumb({
+        category: "auth",
+        message: "Custom Breadcrumb: Clicked Sign Out",
+      });
+      dispatch(signOutStart());
+    }
 
     return(
       <Fragment>
@@ -29,15 +35,15 @@ const Navigation = () => {
 
 
             <div className='nav-links-container'>
-              <Link className='nav-link' to='/shop'>
+              <Link className='nav-link shop-link' to='/shop'>
                 SHOP
               </Link>
               { currentUser ? (
-                <Link className='nav-link' to='/' onClick={signOutUser}>
+                <Link className='nav-link signout-link' to='/' onClick={signOutUser}>
                 SIGN OUT
                 </Link>
               ):(
-                <Link className='nav-link' to='/sign-in'>
+                <Link className='nav-link signin-link' to='/sign-in'>
                 SIGN IN
                 </Link>
               )}

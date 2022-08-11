@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
+import * as Sentry from "@sentry/react";
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
 
@@ -27,6 +27,11 @@ const SignUpForm = () => {
     
       const handleSubmit = async (event) => {
         event.preventDefault();
+
+        Sentry.addBreadcrumb({
+          category: "auth",
+          message: "Custom Breadcrumb: Clicked Sign Up",
+        });
     
         if (password !== confirmPassword) {
           alert("passwords don't match");

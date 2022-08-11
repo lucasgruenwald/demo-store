@@ -18,12 +18,12 @@ const CartDropdown = () => {
     const cartItems = useSelector(selectCartItems);
 
     const goToCheckoutHandler = () => {
-        toggleIsCartOpen();
-        navigate('/checkout');
         Sentry.addBreadcrumb({
             category: "cart",
-            message: "Custom Breadcrumb: Go To Checkout",
+            message: "Custom Breadcrumb: Going To Checkout & Closing Preview",
         });
+        toggleIsCartOpen();
+        navigate('/checkout');
     }
 
     const toggleIsCartOpen = () => dispatch(setIsCartOpen(!isCartOpen));

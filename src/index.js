@@ -19,9 +19,6 @@ Sentry.init({
   integrations: [new BrowserTracing()],
   beforeBreadcrumb(breadcrumb){
 
-      // console.log("breadcrumb:")
-      // console.log(breadcrumb)
-
     if (breadcrumb.data && breadcrumb.data && breadcrumb.data.arguments && breadcrumb.data.arguments[2] && breadcrumb.data.arguments[2].type) {
       const reduxAction = breadcrumb.data.arguments[2].type;
       breadcrumb.message = reduxAction;
@@ -30,7 +27,7 @@ Sentry.init({
       //trash this console color message
       return null;
     }
-    
+
     return breadcrumb;
   },
 

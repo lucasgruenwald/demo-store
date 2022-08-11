@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from "react";
+import * as Sentry from "@sentry/react";
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { addItemToCart } from '../../store/cart/cart.action';
 
@@ -16,6 +17,10 @@ const ProductCard = ({ product }) => {
     const [buttonText, setButtonText] = useState("Add to cart")
 
     const addProductToCart = () => {
+        Sentry.addBreadcrumb({
+            category: "cart",
+            message: `Custom Breadcrumb: Adding ${name} to Cart`,
+        });
         dispatch(addItemToCart(cartItems, product));
         setButtonText("Added ✅");
         setTimeout(() => setButtonText("Add to cart"), 1000);

@@ -15,13 +15,13 @@ const CartIcon = () => {
     const cartItemCount = useSelector(selectCartCount);
 
     const toggleIsCartOpen = () => {
-        dispatch(setIsCartOpen(!isCartOpen));
-
         Sentry.addBreadcrumb({
             category: "cart",
-            message: "Custom Breadcrumb: Toggled cart",
+            message: "Custom Breadcrumb: Toggling Cart Preview",
         });
+        dispatch(setIsCartOpen(!isCartOpen));
     }
+    
     return(
         <div className='cart-icon-container' onClick={toggleIsCartOpen}>
             <ShoppingIcon className='shopping-icon'/>
