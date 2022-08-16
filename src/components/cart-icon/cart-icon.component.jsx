@@ -23,7 +23,7 @@ const CartIcon = () => {
     }
     
     return(
-        <div className='cart-icon-container' onClick={toggleIsCartOpen}>
+        <div aria-label="Cart Icon Button" className='cart-icon-container' onClick={toggleIsCartOpen}>
             <ShoppingIcon className='shopping-icon'/>
             <span className='item-count'>{cartItemCount}</span>
         </div>

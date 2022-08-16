@@ -53,6 +53,10 @@ const SignUpForm = () => {
       const brokenFunction = async (event) => {
         event.preventDefault();
 
+        Sentry.addBreadcrumb({
+          category: "auth",
+          message: "Custom Breadcrumb: Clicked Broken Button",
+        });
         // this will cause an error
         var foo = null;
         alert("triggering an error - check sentry")
@@ -85,9 +89,9 @@ const SignUpForm = () => {
                 <FormInput label="Confirm Password" type="password" required onChange={handleChange} 
                 name='confirmPassword' value={confirmPassword}/>
 
-                <Button type="submit">Sign Up</Button>
+                <Button aria-label="Sign Up Button"  type="submit">Sign Up</Button>
 
-                <Button type="broken" onClick={brokenFunction} style={{"backgroundColor": "crimson", "marginTop": "20px"}}>
+                <Button aria-label="Broken Sign Up Button" type="broken" onClick={brokenFunction} style={{"backgroundColor": "crimson", "marginTop": "20px"}}>
                   Broken sign up
                 </Button>
 

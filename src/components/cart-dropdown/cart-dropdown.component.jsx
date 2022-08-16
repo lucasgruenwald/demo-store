@@ -39,7 +39,7 @@ const CartDropdown = () => {
             (<span className='empty-message'>Your cart is empty 🙁 </span>)
             }
         </div>
-        <Button onClick={goToCheckoutHandler}>Checkout</Button>
+        <Button aria-label="Dropdown Checkout Button" onClick={goToCheckoutHandler}>Checkout</Button>
     </div>
     )
 };

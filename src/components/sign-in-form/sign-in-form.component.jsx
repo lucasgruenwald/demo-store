@@ -96,11 +96,11 @@ const SignInForm = () => {
           value={password}
         />
         <div className='buttons-container'>
-          <Button type='submit'>Sign In</Button>
-          <Button type='button' buttonType='google' onClick={signInWithGoogle}>
+          <Button aria-label="Sign In Button" type='submit'>Sign In</Button>
+          <Button aria-label="Google Sign In Button" type='button' buttonType='google' onClick={signInWithGoogle}>
             Google sign in
           </Button>
-          <Button type='broken' onClick={brokenFunction} style={{"backgroundColor": "crimson", "marginTop": "20px"}}>
+          <Button aria-label="Broken Sign In Button" type='broken' onClick={brokenFunction} style={{"backgroundColor": "crimson", "marginTop": "20px"}}>
             Broken Sign In
           </Button>
         </div>

@@ -17,15 +17,36 @@ import './index.scss';
 Sentry.init({
   dsn: "https://0efc8635e303465ebf813b6dfce3ee2d@o1349733.ingest.sentry.io/6629349",
   integrations: [new BrowserTracing()],
-  beforeBreadcrumb(breadcrumb){
+  beforeBreadcrumb(breadcrumb, hint){
 
+    // reduce unnecessary redux logger data, keep action message
     if (breadcrumb.data && breadcrumb.data && breadcrumb.data.arguments && breadcrumb.data.arguments[2] && breadcrumb.data.arguments[2].type) {
       const reduxAction = breadcrumb.data.arguments[2].type;
       breadcrumb.message = reduxAction;
-      breadcrumb.data = {"Redux": "Logger"};
-    } else if (breadcrumb.message.includes("state color")) {
-      //trash this console color message
+      breadcrumb.category = "Redux Logger"
+      breadcrumb.data = null;
+    } 
+
+    // filter out console messages - react update on unmounted component & stripe warning
+    if (breadcrumb.category && breadcrumb.category == 'console' && breadcrumb.message) {
+      if (breadcrumb.message.includes("Can't perform a React state update on an unmounted component")){
+        return null;
+      } else if (breadcrumb.message.includes("You may test your Stripe.js integration")){
+        return null;
+      }
+    } 
+
+    //filter out console color messages
+    if (breadcrumb.message.includes("state color")) {
       return null;
+    }
+
+    // provide clearer UI clicks 
+    if (breadcrumb.category === 'ui.click') {
+      const { target } = hint.event;
+      if (target.ariaLabel) {
+        breadcrumb.message = target.ariaLabel;
+      }
     }
 
     return breadcrumb;

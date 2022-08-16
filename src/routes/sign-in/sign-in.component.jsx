@@ -15,7 +15,7 @@ const SignIn = () => {
     return(
         <div>
             <h1>Sign In Page</h1>
-            <button onClick={logGoogleUser} >Sign In with Google Popup</button>
+            <button aria-label="Google Sign In Button"  onClick={logGoogleUser} >Sign In with Google Popup</button>
             <SignUpForm/>
         </div>
     );

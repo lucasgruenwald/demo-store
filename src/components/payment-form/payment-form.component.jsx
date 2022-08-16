@@ -70,7 +70,7 @@ const PaymentForm = () => {
         <h2>Card Payment:</h2>
         <CardElement />
 
-        <button className="payment-button inverted" type="submit">
+        <button aria-label="Payment Button" className="payment-button inverted" type="submit">
         { isProcessingPayment ? <div className='loading-spinner'></div> : "Pay Now" }
         </button>
         <p>Test Card: 4242 4242 4242 4242 -- 04/24 -- 123 -- 12345</p>
