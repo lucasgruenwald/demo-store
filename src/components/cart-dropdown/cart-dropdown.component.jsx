@@ -7,7 +7,7 @@ import { setIsCartOpen } from '../../store/cart/cart.action';
 import Button from '../button/button.component'
 import CartItem from '../cart-item/cart-item.component'
 
-import * as Sentry from "@sentry/react";
+// import * as Sentry from "@sentry/react";
 
 import './cart-dropdown.styles.scss'
 
@@ -18,10 +18,10 @@ const CartDropdown = () => {
     const cartItems = useSelector(selectCartItems);
 
     const goToCheckoutHandler = () => {
-        Sentry.addBreadcrumb({
-            category: "cart",
-            message: "Custom Breadcrumb: Going To Checkout & Closing Preview",
-        });
+        // Sentry.addBreadcrumb({
+        //     category: "cart",
+        //     message: "Custom Breadcrumb: Going To Checkout & Closing Preview",
+        // });
         toggleIsCartOpen();
         navigate('/checkout');
     }

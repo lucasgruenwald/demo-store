@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from "react";
-import * as Sentry from "@sentry/react";
+// import * as Sentry from "@sentry/react";
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { addItemToCart } from '../../store/cart/cart.action';
 
@@ -17,17 +17,17 @@ const ProductCard = ({ product }) => {
     const [buttonText, setButtonText] = useState("Add to cart")
 
     const addProductToCart = () => {
-        Sentry.addBreadcrumb({
-            category: "cart",
-            message: `Custom Breadcrumb: Adding ${name} to Cart`,
-        });
+        // Sentry.addBreadcrumb({
+        //     category: "cart",
+        //     message: `Custom Breadcrumb: Adding ${name} to Cart`,
+        // });
         dispatch(addItemToCart(cartItems, product));
         setButtonText("Added ✅");
         setTimeout(() => setButtonText("Add to cart"), 1000);
     }
 
     return(
-        <div className="product-card-container" style={{"border": "1px solid lightgray", "borderRadius": "4px", "paddingLeft": "5px", "paddingRight": "5px", "paddingTop": "5px"}}>
+        <div aria-label="Product Card Container"className="product-card-container" style={{"border": "1px solid lightgray", "borderRadius": "4px", "paddingLeft": "5px", "paddingRight": "5px", "paddingTop": "5px"}}>
             <img aria-label={`${name} Image`} src={imageUrl} alt={`${name}`} style={{"aspectRatio": "1/1"}} />
             <div className='footer'>
                 <span className='name'>{name}</span>

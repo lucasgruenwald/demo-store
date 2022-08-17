@@ -27,26 +27,29 @@ Sentry.init({
       breadcrumb.data = null;
     } 
 
-    // filter out console messages - react update on unmounted component & stripe warning
-    if (breadcrumb.category && breadcrumb.category == 'console' && breadcrumb.message) {
-      if (breadcrumb.message.includes("Can't perform a React state update on an unmounted component")){
-        return null;
-      } else if (breadcrumb.message.includes("You may test your Stripe.js integration")){
-        return null;
-      }
-    } 
-
-    //filter out console color messages
-    if (breadcrumb.message.includes("state color")) {
-      return null;
-    }
-
     // provide clearer UI clicks 
-    if (breadcrumb.category === 'ui.click') {
+    else if (breadcrumb.category === 'ui.click') {
       const { target } = hint.event;
       if (target.ariaLabel) {
         breadcrumb.message = target.ariaLabel;
       }
+    }
+
+    // filter out console message - react update on unmounted component 
+    else if (breadcrumb.category && breadcrumb.category === 'console' && breadcrumb.message && 
+        breadcrumb.message.includes("Can't perform a React state update on an unmounted component")) {
+        return null; 
+    }
+
+    // filter out console message - stripe testing
+    else if (breadcrumb.category && breadcrumb.category === 'console' && breadcrumb.message && 
+      breadcrumb.message.includes("You may test your Stripe.js integration")){
+        return null;
+    }
+
+    //filter out console color messages
+    else if (breadcrumb.message.includes("state color")) {
+      return null;
     }
 
     return breadcrumb;

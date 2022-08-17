@@ -21,13 +21,13 @@ const PaymentForm = () => {
 
   const paymentHandler = async (e) => {
     e.preventDefault();
+    
+    if (!stripe || !elements) { return };
 
     Sentry.addBreadcrumb({
       category: "payment",
-      message: "Custom Breadcrumb: Payment Click",
+      message: "Custom Breadcrumb: Starting to Process Payment",
     });
-    
-    if (!stripe || !elements) { return };
 
     setIsProcessingPayment(true);
 

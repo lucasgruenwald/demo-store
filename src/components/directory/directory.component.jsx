@@ -46,7 +46,7 @@ import DirectoryItem from '../directory-item/directory-item.component';
     // })
     
     return(
-      <div className="directory-container">
+      <div aria-label="Directory Container" className="directory-container">
         {categories.map((category) => (
           <DirectoryItem key={category.id} category={category} />
         ))}

@@ -30,14 +30,25 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const sagaMiddleware = createSagaMiddleware()
 
-const middlewares = [process.env.NODE_ENV !== 'production' && logger, sagaMiddleware].filter(
+// !! Important, only for demonstration !! 
+// for demonstration, include redux logger in prod environment:
+const middlewares = [logger, sagaMiddleware].filter(
   (middleware): middleware is Middleware => Boolean(middleware) );
 
 const composeEnhancer =
-  (process.env.NODE_ENV !== 'production' &&
-  window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ) 
+  ( window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ) 
   ||
   compose;
+
+// !! outside of demo purposes, remove logger from prod environment: 
+// const middlewares = [process.env.NODE_ENV !== 'production' && logger, sagaMiddleware].filter(
+//   (middleware): middleware is Middleware => Boolean(middleware) );
+
+// const composeEnhancer =
+//   (process.env.NODE_ENV !== 'production' &&
+//   window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ) 
+//   ||
+//   compose;
 
 const composedEnhancers = composeEnhancer(applyMiddleware(...middlewares));
 
