@@ -20,20 +20,11 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    // Sentry.addBreadcrumb({
-    //   category: "auth",
-    //   message: "Custom Breadcrumb: Clicked Google Sign In",
-    // });
     dispatch(googleSignInStart())
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Sentry.addBreadcrumb({
-    //   category: "auth",
-    //   message: "Custom Breadcrumb: Clicked Email Sign In",
-    // });
 
     try {
       dispatch(emailSignInStart(email, password));
@@ -55,11 +46,6 @@ const SignInForm = () => {
 
   const brokenFunction = async (event) => {
     event.preventDefault();
-
-    // Sentry.addBreadcrumb({
-    //   category: "auth",
-    //   message: "Custom Breadcrumb: Clicked Broken Button",
-    // });
 
     // this will cause an error
     var foo = null;

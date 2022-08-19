@@ -16,12 +16,12 @@ const CheckoutItem = ({ cartItem }) => {
   const removeItemHandler = () => dispatch(removeItemFromCart(cartItems, cartItem));
 
   return (
-    <div className='checkout-item-container'>
+    <div aria-label="Checkout Item Container" className='checkout-item-container'>
       <div className='image-container'>
         <img src={imageUrl} alt={`${name}`} />
       </div>
       <span className='name'> {name} </span>
-      <span className='quantity'>
+      <span aria-label="Clicked Near Quantity Adjustment" className='quantity'>
         <div aria-label={`Decrease Quantity of ${name} Button`} className='arrow' onClick={removeItemHandler}>
           &#10094;
         </div>
